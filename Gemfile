@@ -73,3 +73,4 @@ end
 
 gem 'jquery-rails'
 gem 'devise'
+gem 'webpacker', '~> 5.4'

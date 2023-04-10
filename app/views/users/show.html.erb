@@ -1,2 +1,6 @@
 <h1><%= @user.name %> のプロフィール</h1>
 <p>Email: <%= @user.email %></p>
+
+<strong>
+  <%= link_to 'ダイレクトメッセージを送信', user_messages_path(@user) %>
+</strong>

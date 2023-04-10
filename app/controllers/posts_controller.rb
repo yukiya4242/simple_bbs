@@ -23,6 +23,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
     @comment = Comment.new
   end
 
@@ -38,11 +39,16 @@ class PostsController < ApplicationController
   end
 
 
-
-  def destroy
-    @post.destroy
-    redirect_to posts_path, notice: '投稿を削除しました'
-  end
+def destroy
+    @post = Post.find(params[:id])
+    if @post.user == current_user
+      @post.destroy
+      flash[:notice] = "投稿が削除されました。"
+    else
+      flash[:alert] = "投稿を削除する権限がありません。"
+    end
+    redirect_to posts_path
+end
 
   private
 
