@@ -1,6 +1,13 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
 
+  def new
+  end
+
+  def destroy
+  end
+
+
   def index
     @messages = Message.where(sender_id: current_user.id, receiver_id: params[:user_id])
                        .or(Message.where(sender_id: params[:user_id], receiver_id: current_user.id))
